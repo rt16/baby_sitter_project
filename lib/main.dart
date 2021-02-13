@@ -1,5 +1,6 @@
-import 'package:baby_sitting_service_project/login_screen/login.dart';
+import 'package:baby_sitting_service_project/view/login/login_screen.dart';
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: Login()
+        home: LoginScreen()
     );
   }
 }

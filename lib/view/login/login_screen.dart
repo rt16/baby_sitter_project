@@ -1,16 +1,15 @@
+import 'package:baby_sitting_service_project/common_ui_widgets/body_ui.dart';
+import 'package:baby_sitting_service_project/common_ui_widgets/header_widget.dart';
 import 'package:baby_sitting_service_project/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../body_ui.dart';
-import '../header_widget.dart';
 
-class Login extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginScreenState extends State<LoginScreen> {
    
    Size size;
   @override

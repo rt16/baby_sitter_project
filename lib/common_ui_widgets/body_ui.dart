@@ -1,10 +1,11 @@
-import 'package:baby_sitting_service_project/login_signup_button.dart';
-import 'package:baby_sitting_service_project/registration/registration_screen.dart';
+import 'package:baby_sitting_service_project/common_ui_widgets/login_signup_button.dart';
+import 'package:baby_sitting_service_project/view/dashboard/dashboard.dart';
+import 'package:baby_sitting_service_project/view/registration/registration_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'already_have_account.dart';
-import 'constants/constants.dart';
+import '../constants/constants.dart';
 
 class BodyUi extends StatefulWidget {
   const BodyUi({
@@ -30,8 +31,7 @@ class _BodyUiState extends State<BodyUi> {
     
     return Stack(
         children: <Widget>[
-        Container(
-        
+        Container(        
         margin: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
         color: Colors.white,
@@ -102,7 +102,7 @@ class _BodyUiState extends State<BodyUi> {
             //forgot password widget
             _forgotPassword(),
             SizedBox(height:35),
-            //skip text 
+           
           
             ],
           ),                   
@@ -114,15 +114,13 @@ class _BodyUiState extends State<BodyUi> {
   Widget _registerBodyUi()
   {
     return Column(                      
-      children: [
-       
+      children: [       
         new Form(
           key: _formKey,
           child: Expanded(
-            child: Column(
-             
+            child: Column(             
               children: [
-                SizedBox(height:MediaQuery.of(context).size.width/3),
+                SizedBox(height:MediaQuery.of(context).size.width/5),
                 //parent name
                 new TextFormField(                                                                            
                 decoration: new InputDecoration(
@@ -134,7 +132,7 @@ class _BodyUiState extends State<BodyUi> {
                   ),
                 ),                         
                 suffixIcon:Icon(Icons.person_outline_outlined,color: Color(0xffE36DA6),),                 
-                hintText: '    Parent Name',
+                hintText: ' Parent Name',
                 hintStyle:TextStyle(color: Color(0xffCCCCCC)),                        
                 labelStyle: TextStyle(color: Colors.blueGrey),
                   enabledBorder: new UnderlineInputBorder(
@@ -212,34 +210,27 @@ class _BodyUiState extends State<BodyUi> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-           Flexible(
-               flex: 1,
-               child: _childrenRadioButton(
+           _childrenRadioButton(
               title: "1(One)",
               value: 0,
               onChanged: (newValue) => setState(() => _groupValue = newValue),
               ),
-           ),
            //2
-              Expanded(
-               child: _childrenRadioButton(
+              _childrenRadioButton(
               title: "2(Two)",
               value: 1,
               onChanged: (newValue) => setState(() => _groupValue = newValue),
               ),
-           ),
            //9
-            Expanded(
-             child: _childrenRadioButton(
+            _childrenRadioButton(
             title: "More",
             value: 2,
             onChanged: (newValue) => setState(() => _groupValue = newValue),
             ),
-           ),
            
               ],),
             ),
-            SizedBox(height: widget.containerHeight/21,),
+            SizedBox(height: widget.containerHeight/24,),
             //city
             new TextFormField(                                                                            
                 decoration: new InputDecoration(  
@@ -261,7 +252,7 @@ class _BodyUiState extends State<BodyUi> {
             ),
               SizedBox(height:50),
               RoundedButton(text:widget.type=="login"?"Verify":"Next",textColor: Colors.white,color: appColor,press: (){
-               // _navigateToHome();
+               _navigateToHome();
               },),
               SizedBox(height:20),
               //already have account widget
@@ -282,21 +273,42 @@ class _BodyUiState extends State<BodyUi> {
       ],
     );
   }
+  _navigateToHome(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> DashBoard()));
+  }
   //radio button 
   Widget _childrenRadioButton({String title, int value, Function onChanged}) {
-  return Transform.scale(
-     scale: 1,
-    child: RadioListTile(
-      activeColor: appColor,
-      selectedTileColor: appColor,
-      dense: true,
-      value: value,
-      groupValue: _groupValue,
-      onChanged: onChanged,
-      title: Text(title,style: TextStyle(fontSize:10),),
-    ),
+  return Row(
+    children: [
+      Transform.scale(
+       scale: 1.0,
+        child: new Radio(                   
+        activeColor: appColor,    
+         value: value,
+         groupValue: _groupValue,
+         onChanged: _handleRadioValueChange,
+         ),
+      ),
+      new Text(
+      title,
+      style: new TextStyle(fontSize: 14.0),
+      ),
+
+    ],
   );
+
   }
+  void _handleRadioValueChange(int value) {
+
+    setState(() {
+
+      _groupValue = value;
+
+
+    });
+
+  }
+
   _navigateToRegister()
   {
      Navigator.push(context,MaterialPageRoute(builder: (context) => Register()),);
