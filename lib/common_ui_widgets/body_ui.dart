@@ -32,15 +32,15 @@ class _BodyUiState extends State<BodyUi> {
     return Stack(
         children: <Widget>[
         Container(        
-        margin: EdgeInsets.all(20.0),
+        margin: EdgeInsets.symmetric(vertical: 25.0,horizontal: 22.0),
         decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.blueGrey.shade100, 
-            spreadRadius: 4,
-            blurRadius: 10  
+            color: Colors.grey.shade100, 
+            spreadRadius: 3,
+            blurRadius: 8  
           )              
           ]),
               alignment: Alignment.center,

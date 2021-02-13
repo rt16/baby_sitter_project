@@ -19,14 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
      body: SingleChildScrollView(
        child: Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 22),
          child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
            children: [
            //header
-          HeaderWidget(size: size),
+          HeaderWidget(size: size,type:"login"),
           BodyUi(containerHeight: containerHeight,type: "login",),
           Align(alignment: Alignment.center, child: Text("Skip ",style: TextStyle(color: accountChkTextColor,fontWeight: FontWeight.w500),))
           
